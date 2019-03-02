@@ -13,10 +13,17 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+       Schema::create('category', function (Blueprint $table) {
+            $table->unsignedTinyInteger('Id')->autoIncrement();
+            $table->string('name',50);
+            $table->timestamp('create')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('update')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedTinyInteger('status')->default('2');         
+            $table->unique('name');
+        
+            
         });
+        DB::statement("ALTER TABLE `category`");
     }
 
     /**
