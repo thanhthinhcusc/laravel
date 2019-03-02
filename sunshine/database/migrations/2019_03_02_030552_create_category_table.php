@@ -15,11 +15,11 @@ class CreateCategoryTable extends Migration
     {
        Schema::create('category', function (Blueprint $table) {
             $table->unsignedTinyInteger('Id')->autoIncrement();
-            $table->string('name',50);
-            $table->timestamp('create')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->unsignedTinyInteger('status')->default('2');         
-            $table->unique('name');
+            $table->string('Name',50);
+            $table->timestamp('DateCreated')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('DateModified')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedTinyInteger('Status')->default('2');         
+            $table->unique('Name');
         
             
         });
